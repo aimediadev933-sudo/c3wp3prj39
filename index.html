@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Campus Network Security and Monitoring Training - Afghanistan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #017CA5;
+            --secondary: #5DBEDB;
+            --body: #F1F5F8;
+            --text: #1D1D1B;
+            --secondary-dark: #1F3F56;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--body);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-text h1 {
+            font-size: 2.0rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background-color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary);
+        }
+
+        .section h2 {
+            color: var(--secondary-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .crisis-context {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-left-color: #fd79a8;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .crisis-context h4 {
+            color: #d63031;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(1, 124, 165, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .training-phases {
+            background: var(--body);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .phase-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .phase-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .phase-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 1.5rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .phase-content h4 {
+            color: var(--secondary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .security-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, var(--secondary-dark), #2c5f7c);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(31, 63, 86, 0.3);
+        }
+
+        .tool-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .foss-highlight {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .foss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .foss-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .foss-item:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .assessment-results {
+            background: linear-gradient(135deg, #e8f5e8, #d4edda);
+            border-left-color: #28a745;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .assessment-results h4 {
+            color: #155724;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 2s ease;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .partner-card {
+            background: var(--body);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .partner-card.lead {
+            background: var(--primary);
+            color: white;
+        }
+
+        .outcomes {
+            background: linear-gradient(135deg, #fff, #e8f5e8);
+            border-left-color: #27ae60;
+        }
+
+        .challenges {
+            background: linear-gradient(135deg, #fff, var(--body));
+            border-left-color: #e74c3c;
+        }
+
+        .afghanistan-flag {
+            display: inline-block;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .sdg-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .sdg-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logos {
+                justify-content: center;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .phase-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .phase-badge {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.4rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .logos {
+                gap: 1rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logos">
+                    <img src="images/logos/eu-logo.png" alt="European Union" class="logo">
+                    <img src="images/logos/tein-logo.png" alt="TEIN CC" class="logo">
+                    <img src="images/logos/asia-connect-logo.png" alt="Asia Connect" class="logo">
+                </div>
+                <div class="hero-text">
+                    <h1>WP3 Network Security Training</h1>
+                    <p>Campus Network Security & Monitoring for Afghan Universities</p>
+                    <div class="hero-badge"><span class="afghanistan-flag">🇦🇫</span>Afghanistan • 2nd Call • 25 Universities</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#tools">Security Tools</a></li>
+                <li><a href="#outcomes">Outcomes</a></li>
+                <li><a href="#partners">Partners</a></li>
+                <li><a href="#future">Future</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="overview" class="section">
+            <h2>Project Overview</h2>
+            <p>The project aimed to build foundational and advanced capacity in network security and monitoring among IT technicians of Afghan public universities. Conducted in two intensive 5-day training phases, coordinated by MoHE and Shaheed Rabbani Education University, the workshop covered <span class="highlight">network threats, security tools, protocols, and mitigation techniques</span> for campus infrastructure protection.</p>
+            
+            <div class="crisis-context">
+                <h4>🏛️ Critical Infrastructure Protection</h4>
+                <p>This training was essential for strengthening cybersecurity capabilities across Afghanistan's higher education sector, providing IT technicians with practical skills to protect university networks and systems.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">49</div>
+                    <div>IT Technicians Trained</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25</div>
+                    <div>Public Universities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div>Training Phases</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div>Satisfaction Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="training" class="section">
+            <h2>Training Phases & Curriculum</h2>
+            <div class="training-phases">
+                <div class="phase-item">
+                    <div class="phase-badge">Phase I</div>
+                    <div class="phase-content">
+                        <h4>December 2019 - Foundation Training</h4>
+                        <p>Initial 5-day intensive workshop covering network security fundamentals, threat identification, and basic security tools deployment for university IT staff.</p>
+                    </div>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-badge">Phase II</div>
+                    <div class="phase-content">
+                        <h4>February 2020 - Advanced Training</h4>
+                        <p>Advanced 5-day workshop focusing on sophisticated security protocols, monitoring techniques, and hands-on implementation of enterprise security solutions.</p>
+                    </div>
+                </div>
+                <div class="phase-item">
+                    <div class="phase-badge">Assessment</div>
+                    <div class="phase-content">
+                        <h4>Pre & Post Training Evaluation</h4>
+                        <p>Comprehensive assessment program measuring knowledge gains in secure practices, tool awareness, and network monitoring capabilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="assessment-results">
+                <h4>📊 Training Effectiveness Results</h4>
+                <p><strong>Significant Knowledge Improvement:</strong> Post-test scores showed major gains in VPN awareness, IDPS understanding, and modern security protocol implementation.</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;">85% Average Improvement</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools" class="section">
+            <h2>Security Tools & Technologies</h2>
+            <div class="security-tools">
+                <div class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h3>Network Analysis</h3>
+                    <p>Wireshark packet analysis, network traffic monitoring, and protocol inspection techniques</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>Intrusion Detection</h3>
+                    <p>Snort IDPS deployment, rule configuration, and real-time threat detection systems</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔥</div>
+                    <h3>Firewall Management</h3>
+                    <p>PFSense configuration, firewall rules, and network segmentation strategies</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <h3>VPN & Encryption</h3>
+                    <p>Secure VPN deployment, 802.11 wireless security, and encryption protocols</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3>DNS Security</h3>
+                    <p>DNSSEC implementation, secure DNS configuration, and domain protection</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>VLAN Management</h3>
+                    <p>Network segmentation, VLAN configuration, and traffic isolation techniques</p>
+                </div>
+            </div>
+
+            <div class="foss-highlight">
+                <h3>🖥️ Free & Open Source Security Tools</h3>
+                <p>Promoting FOSS adoption to reduce reliance on cracked software and enhance security:</p>
+                <div class="foss-grid">
+                    <div class="foss-item">Security Onion</div>
+                    <div class="foss-item">Kali Linux</div>
+                    <div class="foss-item">PFSense</div>
+                    <div class="foss-item">Wireshark</div>
+                    <div class="foss-item">Snort IDS</div>
+                    <div class="foss-item">OpenVPN</div>
+                    <div class="foss-item">Nmap Scanner</div>
+                    <div class="foss-item">Metasploit</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="outcomes" class="section outcomes">
+            <h2>Key Achievements & Impact</h2>
+            
+            <h3>🎯 Capacity Building Success</h3>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>49 IT Technicians Trained:</strong> From 25 public universities and Ministry of Higher Education</li>
+                <li><strong>FOSS Tool Adoption:</strong> Participants trained in Security Onion, PFSense, and Kali Linux</li>
+                <li><strong>Bandwidth Optimization:</strong> Strategies implemented for campus usage optimization and content blocking</li>
+                <li><strong>Security Protocol Enhancement:</strong> Significant improvement in VPN, IDPS, and modern security awareness</li>
+            </ul>
+
+            <h3>📋 Policy & Standards Development</h3>
+            <p><strong>MoHE Policy Initiative:</strong> Ministry pledged to draft standardized security policy with university input for nationwide implementation.</p>
+            <p><strong>Facebook Community:</strong> Trainer support group created for post-training collaboration, updates, and knowledge sharing among participants.</p>
+
+            <h3>✅ Participant Satisfaction</h3>
+            <p><strong>100% Positive Feedback:</strong> All participants rated the workshop as useful and relevant, with majority requesting longer duration and follow-up phases for advanced topics.</p>
+        </section>
+
+        <section id="partners" class="section">
+            <h2>Partner Organizations</h2>
+            <p>Coordinated by the Ministry of Higher Education and Shaheed Rabbani Education University with strong institutional partnerships:</p>
+            
+            <div class="partners-grid">
+                <div class="partner-card lead">
+                    <h3>MoHE</h3>
+                    <p>Ministry of Higher Education<br><strong>Lead Coordinator - Afghanistan</strong></p>
+                </div>
+                <div class="partner-card lead">
+                    <h3>SREU</h3>
+                    <p>Shaheed Rabbani Education University<br><strong>Training Host</strong></p>
+                </div>
+                <div class="partner-card">
+                    <h3>AfgREN</h3>
+                    <p>Afghanistan Research and<br>Education Network</p>
+                </div>
+                <div class="partner-card">
+                    <h3>KPU</h3>
+                    <p>Kabul Polytechnic<br>University</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section challenges">
+            <h2>Challenges & Future Directions</h2>
+            
+            <h3>⚠️ Implementation Challenges</h3>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>Training Duration:</strong> Participants recommended more time for advanced cybersecurity topics</li>
+                <li><strong>Economic Constraints:</strong> Local bank policies and exchange rates disrupted equipment budgeting</li>
+                <li><strong>Infrastructure Limitations:</strong> Weak internet bandwidth hindered some practical lab exercises</li>
+                <li><strong>Resource Procurement:</strong> Currency fluctuations affected equipment acquisition timelines</li>
+            </ul>
+
+            <h3>🚀 Future Development Plans</h3>
+            <p><strong>Advanced Training Phase:</strong> Second-round workshop planned on advanced cybersecurity topics with extended sessions.</p>
+            <p><strong>National Security Policy:</strong> Standard network security policy in development with MoHE for all public universities.</p>
+            <p><strong>Online Learning Access:</strong> Trainers to provide participants with advanced security MOOCs and webinar access.</p>
+            <p><strong>Knowledge Hub Expansion:</strong> Facebook support group to evolve into national IT security knowledge sharing platform.</p>
+        </section>
+
+        <section id="future" class="section">
+            <h2>Sustainable Development Goals</h2>
+            <p>This network security capacity building project contributes to strengthening Afghanistan's higher education infrastructure:</p>
+            <div class="sdg-badges">
+                <div class="sdg-badge">SDG 4: Quality Education</div>
+                <div class="sdg-badge">SDG 9: Innovation & Infrastructure</div>
+                <div class="sdg-badge">SDG 16: Peace & Strong Institutions</div>
+                <div class="sdg-badge">SDG 17: Partnerships for Goals</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Project Details</h3>
+                    <p>Category: WP3 (Work Package 3)</p>
+                    <p>Call: 2nd Call</p>
+                    <p>Training Period: Dec 2019 - Feb 2020</p>
+                    <p>Country: Afghanistan 🇦🇫</p>
+                    <p>Coordinators: MoHE & SREU</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Security Training Focus</h3>
+                    <p>• Network Threat Assessment</p>
+                    <p>• Firewall & IDPS Deployment</p>
+                    <p>• VPN & Encryption Protocols</p>
+                    <p>• FOSS Security Tools</p>
+                    <p>• Bandwidth Management</p>
+                </div>
+                <div class="footer-section">
+                    <h3>National Impact</h3>
+                    <p>Strengthening cybersecurity capabilities across Afghanistan's higher education sector through comprehensive training in network security, monitoring tools, and standardized security policies.</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2019-2020 On-Campus Network Security Training, Afghanistan. Coordinated by MoHE & SREU. Supported by TEIN*CC and regional partners.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate stat numbers on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text.includes('%')) {
+                            const finalValue = parseInt(text);
+                            animateValue(stat, 0, finalValue, 2000, '%');
+                        } else if (!isNaN(parseInt(text))) {
+                            const finalValue = parseInt(text);
+                            animateValue(stat, 0, finalValue, 2000);
+                        }
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            observer.observe(statsGrid);
+        }
+
+        function animateValue(element, start, end, duration, suffix = '') {
+            let startTimestamp = null;
+            const originalText = element.textContent;
+            
+            // Handle non-numeric values
+            if (isNaN(end)) {
+                return;
+            }
+            
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.textContent = currentValue + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = originalText; // Restore original text
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
